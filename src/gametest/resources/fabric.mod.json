@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "immortality-test",
+  "version": "1.0.0",
+  "name": "Immortality Game Tests",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-client-gametest": ["immortality.client.test.ImmortalityClientGameTest"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.1",
+    "immortality": "*"
+  }
+}

@@ -1,0 +1,359 @@
+[
+  {
+    "id": "qi_sense",
+    "title": "Qi Sense",
+    "description": "Notice the movement of Qi.",
+    "category": "qi",
+    "column": 0,
+    "row": 0,
+    "requiredStage": "MORTAL",
+    "prerequisites": [],
+    "requiredInsights": [
+      "breath_of_qi"
+    ],
+    "qiCost": 0,
+    "requiredItemId": null,
+    "studyBoardId": "small_ring",
+    "studyBoardQiLimit": 5,
+    "studyVictoryMode": "single_path",
+    "studyStarts": [{ "x": 1, "y": 5 }],
+    "studyFinishes": [{ "x": 6, "y": 4 }],
+    "studyRequiredNodes": [{ "x": 3, "y": 4 }],
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "meridian_cycle",
+    "title": "Meridian Cycle",
+    "description": "Circulate Qi through the body.",
+    "category": "qi",
+    "column": 1,
+    "row": 0,
+    "requiredStage": "MORTAL",
+    "prerequisites": [
+      "qi_sense"
+    ],
+    "requiredInsights": [
+      "meridian_map"
+    ],
+    "qiCost": 12,
+    "requiredItemId": null,
+    "studyBoardId": "small_ring",
+    "studyBoardQiLimit": 6,
+    "studyVictoryMode": "required_route",
+    "studyStarts": [{ "x": 1, "y": 5 }],
+    "studyFinishes": [{ "x": 8, "y": 4 }],
+    "studyRequiredNodes": [{ "x": 3, "y": 4 }, { "x": 6, "y": 5 }],
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "foundation_blueprint",
+    "title": "Foundation Blueprint",
+    "description": "Comprehend how a stable foundation is formed.",
+    "category": "breakthrough",
+    "column": 2,
+    "row": 0,
+    "requiredStage": "QI_GATHERING",
+    "prerequisites": [
+      "meridian_cycle"
+    ],
+    "requiredInsights": [
+      "foundation_schema"
+    ],
+    "qiCost": 28,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "core_seal",
+    "title": "Core Seal",
+    "description": "Use a beast core as the seed of a greater realm.",
+    "category": "beast",
+    "column": 3,
+    "row": 0,
+    "requiredStage": "FOUNDATION_ESTABLISHMENT",
+    "prerequisites": [
+      "foundation_blueprint"
+    ],
+    "requiredInsights": [
+      "core_seed"
+    ],
+    "qiCost": 42,
+    "requiredItemId": "immortality:spirit_beast_core",
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "golden_core_method",
+    "title": "Golden Core Method",
+    "description": "Condense spiritual power into a stable inner core.",
+    "category": "breakthrough",
+    "column": 4,
+    "row": 0,
+    "requiredStage": "FOUNDATION_ESTABLISHMENT",
+    "prerequisites": [
+      "core_seal"
+    ],
+    "requiredInsights": [
+      "golden_core"
+    ],
+    "qiCost": 54,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "iron_body_method",
+    "title": "Iron Body Method",
+    "description": "Temper the flesh into a stronger vessel.",
+    "category": "body",
+    "column": 2,
+    "row": 1,
+    "requiredStage": "QI_GATHERING",
+    "prerequisites": [
+      "meridian_cycle"
+    ],
+    "requiredInsights": [
+      "bone_forging"
+    ],
+    "qiCost": 20,
+    "requiredItemId": null,
+    "rewardType": "BODY",
+    "rewardValue": "iron_body"
+  },
+  {
+    "id": "spirit_vessel_method",
+    "title": "Spirit Vessel Method",
+    "description": "Refine a more sensitive spiritual body.",
+    "category": "body",
+    "column": 2,
+    "row": 2,
+    "requiredStage": "QI_GATHERING",
+    "prerequisites": [
+      "meridian_cycle"
+    ],
+    "requiredInsights": [
+      "spirit_vessel"
+    ],
+    "qiCost": 20,
+    "requiredItemId": null,
+    "rewardType": "BODY",
+    "rewardValue": "spirit_vessel"
+  },
+  {
+    "id": "core_flame_refinement",
+    "title": "Core Flame Refinement",
+    "description": "Refine the core and remove lingering impurities.",
+    "category": "qi",
+    "column": 5,
+    "row": 0,
+    "requiredStage": "CORE_FORMATION",
+    "prerequisites": [
+      "golden_core_method"
+    ],
+    "requiredInsights": [
+      "inner_flame"
+    ],
+    "qiCost": 68,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "nascent_soul_seed",
+    "title": "Nascent Soul Seed",
+    "description": "Form the first spiritual embryo within the core.",
+    "category": "soul",
+    "column": 6,
+    "row": 0,
+    "requiredStage": "CORE_FORMATION",
+    "prerequisites": [
+      "core_flame_refinement"
+    ],
+    "requiredInsights": [
+      "nascent_seed"
+    ],
+    "qiCost": 82,
+    "requiredItemId": null,
+    "studyBoardId": "great_lattice",
+    "studyBoardQiLimit": 14,
+    "studyVictoryMode": "required_route",
+    "studyStarts": [{ "x": 2, "y": 10 }],
+    "studyFinishes": [{ "x": 17, "y": 9 }],
+    "studyRequiredNodes": [{ "x": 8, "y": 10 }, { "x": 11, "y": 9 }],
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "nascent_soul_manifestation",
+    "title": "Nascent Soul Manifestation",
+    "description": "Allow the soul to emerge beyond the body.",
+    "category": "soul",
+    "column": 7,
+    "row": 0,
+    "requiredStage": "NASCENT_SOUL",
+    "prerequisites": [
+      "nascent_soul_seed"
+    ],
+    "requiredInsights": [
+      "soul_projection"
+    ],
+    "qiCost": 96,
+    "requiredItemId": null,
+    "studyBoardId": "great_lattice",
+    "studyBoardQiLimit": 18,
+    "studyVictoryMode": "all_finishes",
+    "studyStarts": [{ "x": 2, "y": 10 }],
+    "studyFinishes": [{ "x": 17, "y": 9 }, { "x": 17, "y": 12 }],
+    "studyRequiredNodes": [{ "x": 8, "y": 10 }, { "x": 11, "y": 9 }, { "x": 13, "y": 10 }],
+    "rewardType": "SKILL",
+    "rewardValue": "nascent_soul"
+  },
+  {
+    "id": "dao_heart_trial",
+    "title": "Dao Heart Trial",
+    "description": "Temper the will and prepare to sever mortal attachment.",
+    "category": "breakthrough",
+    "column": 8,
+    "row": 0,
+    "requiredStage": "NASCENT_SOUL",
+    "prerequisites": [
+      "nascent_soul_manifestation"
+    ],
+    "requiredInsights": [
+      "dao_heart"
+    ],
+    "qiCost": 112,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "spirit_severing_art",
+    "title": "Spirit Severing Art",
+    "description": "Sever mortal attachments and transform the soul.",
+    "category": "breakthrough",
+    "column": 9,
+    "row": 0,
+    "requiredStage": "SPIRIT_SEVERING",
+    "prerequisites": [
+      "dao_heart_trial"
+    ],
+    "requiredInsights": [
+      "severing_intent"
+    ],
+    "qiCost": 132,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "yin_comprehension",
+    "title": "Yin Comprehension",
+    "description": "Perceive the hidden yin principles of heaven and earth.",
+    "category": "dao",
+    "column": 10,
+    "row": 0,
+    "requiredStage": "ASCENDANT",
+    "prerequisites": [
+      "spirit_severing_art"
+    ],
+    "requiredInsights": [
+      "yin_flow"
+    ],
+    "qiCost": 150,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "yang_manifestation",
+    "title": "Yang Manifestation",
+    "description": "Transform yang force into a truer spiritual body.",
+    "category": "dao",
+    "column": 11,
+    "row": 0,
+    "requiredStage": "ILLUSORY_YIN",
+    "prerequisites": [
+      "yin_comprehension"
+    ],
+    "requiredInsights": [
+      "yang_form"
+    ],
+    "qiCost": 168,
+    "requiredItemId": null,
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "nirvana_karma_thread",
+    "title": "Nirvana Karma Thread",
+    "description": "Sense the karmic ties connecting all living beings.",
+    "category": "dao",
+    "column": 12,
+    "row": 0,
+    "requiredStage": "CORPOREAL_YANG",
+    "prerequisites": [
+      "yang_manifestation"
+    ],
+    "requiredInsights": [
+      "karma_thread"
+    ],
+    "qiCost": 190,
+    "requiredItemId": null,
+    "rewardType": "SKILL",
+    "rewardValue": "karma_sight"
+  },
+  {
+    "id": "nirvana_cycle_method",
+    "title": "Nirvana Cycle Method",
+    "description": "Step through life and death to refine the true self.",
+    "category": "breakthrough",
+    "column": 13,
+    "row": 0,
+    "requiredStage": "NIRVANA_SCRYER",
+    "prerequisites": [
+      "nirvana_karma_thread"
+    ],
+    "requiredInsights": [
+      "nirvana_cycle"
+    ],
+    "qiCost": 228,
+    "requiredItemId": null,
+    "studyBoardId": "great_lattice",
+    "studyBoardQiLimit": 16,
+    "studyVictoryMode": "required_route",
+    "studyStarts": [{ "x": 2, "y": 10 }],
+    "studyFinishes": [{ "x": 15, "y": 12 }],
+    "studyRequiredNodes": [{ "x": 8, "y": 10 }, { "x": 13, "y": 10 }],
+    "rewardType": "NONE",
+    "rewardValue": null
+  },
+  {
+    "id": "void_tribulation_mark",
+    "title": "Void Tribulation Mark",
+    "description": "Endure heavenly pressure and leave a mark upon the void.",
+    "category": "breakthrough",
+    "column": 14,
+    "row": 0,
+    "requiredStage": "NIRVANA_CLEANSER",
+    "prerequisites": [
+      "nirvana_cycle_method"
+    ],
+    "requiredInsights": [
+      "void_mark"
+    ],
+    "qiCost": 270,
+    "requiredItemId": null,
+    "studyBoardId": "great_lattice",
+    "studyBoardQiLimit": 18,
+    "studyVictoryMode": "all_finishes",
+    "studyStarts": [{ "x": 2, "y": 10 }],
+    "studyFinishes": [{ "x": 17, "y": 9 }, { "x": 17, "y": 12 }],
+    "studyRequiredNodes": [{ "x": 8, "y": 10 }, { "x": 11, "y": 9 }, { "x": 13, "y": 10 }, { "x": 15, "y": 12 }],
+    "rewardType": "NONE",
+    "rewardValue": null
+  }
+]

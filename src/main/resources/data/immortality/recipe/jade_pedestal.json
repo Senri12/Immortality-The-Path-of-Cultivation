@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "J": "immortality:jade_block",
+    "S": "minecraft:stone_slab"
+  },
+  "pattern": [
+    "SSS",
+    " J ",
+    "JJJ"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:jade_pedestal"
+  }
+}

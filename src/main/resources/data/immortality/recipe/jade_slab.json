@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "J": "immortality:jade_planks"
+  },
+  "pattern": [
+    "JJJ"
+  ],
+  "result": {
+    "count": 6,
+    "id": "immortality:jade_slab"
+  }
+}

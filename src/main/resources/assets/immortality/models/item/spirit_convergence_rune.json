@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "immortality:item/spirit_convergence_rune"
+  }
+}

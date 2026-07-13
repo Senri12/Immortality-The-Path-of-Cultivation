@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "minecraft:compass",
+    "J": "immortality:immortals_jade"
+  },
+  "pattern": [
+    " J ",
+    "JCJ",
+    " J "
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:formation_compass"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": "minecraft:stone_bricks",
+    "J": "immortality:immortals_jade",
+    "O": "minecraft:obsidian"
+  },
+  "pattern": [
+    "JJJ",
+    "SOS",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:enlightenment_altar"
+  }
+}

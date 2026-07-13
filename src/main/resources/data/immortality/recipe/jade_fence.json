@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "J": "immortality:jade_planks",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "JSJ",
+    "JSJ"
+  ],
+  "result": {
+    "count": 3,
+    "id": "immortality:jade_fence"
+  }
+}

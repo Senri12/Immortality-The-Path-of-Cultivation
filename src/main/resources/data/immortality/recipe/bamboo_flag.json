@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:bamboo",
+    "W": "minecraft:lime_wool"
+  },
+  "pattern": [
+    "WW ",
+    "WB ",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:bamboo_flag"
+  }
+}

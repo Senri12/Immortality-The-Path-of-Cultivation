@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:bookshelf",
+    "P": "minecraft:oak_planks",
+    "F": "minecraft:feather",
+    "I": "minecraft:ink_sac"
+  },
+  "pattern": [
+    "F I",
+    "PPP",
+    "PBP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:research_study"
+  }
+}

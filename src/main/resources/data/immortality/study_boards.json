@@ -1,0 +1,51 @@
+[
+  {
+    "id": "small_ring",
+    "width": 10,
+    "height": 10,
+    "qiLimit": 8,
+    "yinYangTolerance": 2,
+    "victoryMode": "required_route",
+    "starts": [{ "x": 1, "y": 5 }],
+    "finishes": [{ "x": 8, "y": 4 }],
+    "requiredNodes": [{ "x": 3, "y": 4 }, { "x": 6, "y": 5 }],
+    "blocked": [
+      { "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 2, "y": 0 }, { "x": 7, "y": 0 }, { "x": 8, "y": 0 }, { "x": 9, "y": 0 },
+      { "x": 0, "y": 9 }, { "x": 1, "y": 9 }, { "x": 2, "y": 9 }, { "x": 7, "y": 9 }, { "x": 8, "y": 9 }, { "x": 9, "y": 9 },
+      { "x": 4, "y": 4 }, { "x": 5, "y": 4 }, { "x": 4, "y": 5 }, { "x": 5, "y": 5 }
+    ],
+    "effects": [
+      { "x": 2, "y": 5, "favoredAspects": ["water", "mist", "yin"], "hostileAspects": ["fire", "ember", "yang"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "transformTo": "mist" },
+      { "x": 3, "y": 4, "favoredAspects": ["wood", "bloom", "spirit"], "hostileAspects": ["metal", "ore"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredAdjacentAspect": "mist" },
+      { "x": 6, "y": 5, "favoredAspects": ["earth", "marrow", "body"], "hostileAspects": ["void", "abyss"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "transformTo": "marrow", "requiredPolarity": "balanced" },
+      { "x": 7, "y": 4, "favoredAspects": ["yang", "dawn", "thunder"], "hostileAspects": ["yin", "dream"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredPolarity": "yang", "transformTo": "dawn" }
+    ]
+  },
+  {
+    "id": "great_lattice",
+    "width": 20,
+    "height": 20,
+    "qiLimit": 18,
+    "yinYangTolerance": 3,
+    "victoryMode": "all_finishes",
+    "starts": [{ "x": 2, "y": 10 }],
+    "finishes": [{ "x": 17, "y": 9 }, { "x": 17, "y": 12 }],
+    "requiredNodes": [{ "x": 8, "y": 10 }, { "x": 11, "y": 9 }, { "x": 13, "y": 10 }],
+    "blocked": [
+      { "x": 0, "y": 0 }, { "x": 1, "y": 0 }, { "x": 18, "y": 0 }, { "x": 19, "y": 0 },
+      { "x": 0, "y": 19 }, { "x": 1, "y": 19 }, { "x": 18, "y": 19 }, { "x": 19, "y": 19 },
+      { "x": 7, "y": 7 }, { "x": 8, "y": 7 }, { "x": 9, "y": 7 }, { "x": 10, "y": 7 }, { "x": 11, "y": 7 }, { "x": 12, "y": 7 },
+      { "x": 7, "y": 12 }, { "x": 8, "y": 12 }, { "x": 9, "y": 12 }, { "x": 10, "y": 12 }, { "x": 11, "y": 12 }, { "x": 12, "y": 12 },
+      { "x": 9, "y": 8 }, { "x": 10, "y": 8 }, { "x": 9, "y": 11 }, { "x": 10, "y": 11 }
+    ],
+    "effects": [
+      { "x": 4, "y": 10, "favoredAspects": ["water", "mist", "frost", "yin"], "hostileAspects": ["fire", "ember", "blood"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "transformTo": "frost" },
+      { "x": 6, "y": 9, "favoredAspects": ["wood", "bloom", "thunder", "dawn"], "hostileAspects": ["metal", "ore", "void"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredAdjacentAspect": "frost", "transformTo": "thunder" },
+      { "x": 8, "y": 10, "favoredAspects": ["spirit", "dream", "soul", "karma"], "hostileAspects": ["body", "marrow"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredPolarity": "yin", "transformTo": "dream" },
+      { "x": 11, "y": 9, "favoredAspects": ["earth", "body", "marrow", "ore"], "hostileAspects": ["mist", "dream"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredAdjacentAspect": "dream", "transformTo": "marrow" },
+      { "x": 13, "y": 10, "favoredAspects": ["fire", "ember", "yang", "blood"], "hostileAspects": ["water", "frost"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredPolarity": "yang", "transformTo": "blood" },
+      { "x": 15, "y": 9, "favoredAspects": ["void", "abyss", "echo", "metal"], "hostileAspects": ["spirit", "dawn"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredAdjacentAspect": "blood", "transformTo": "abyss" },
+      { "x": 15, "y": 12, "favoredAspects": ["spirit", "echo", "karma", "dawn"], "hostileAspects": ["abyss", "void"], "favoredQiDelta": -1, "hostileQiDelta": 1, "neutralQiDelta": 0, "requiredAdjacentAspect": "marrow", "transformTo": "karma", "requiredPolarity": "balanced" }
+    ]
+  }
+]

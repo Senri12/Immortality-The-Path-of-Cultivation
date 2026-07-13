@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "immortality:jade_block"
+  ],
+  "result": {
+    "count": 4,
+    "id": "immortality:jade_planks"
+  }
+}

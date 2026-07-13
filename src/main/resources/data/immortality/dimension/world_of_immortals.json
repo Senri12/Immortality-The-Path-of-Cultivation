@@ -1,0 +1,11 @@
+{
+  "type": "immortality:world_of_immortals",
+  "generator": {
+    "type": "minecraft:noise",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:plains"
+    },
+    "settings": "immortality:world_of_immortals"
+  }
+}

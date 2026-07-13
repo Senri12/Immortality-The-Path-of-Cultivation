@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:add",
+  "argument1": "immortality:island_field",
+  "argument2": {
+    "type": "minecraft:mul",
+    "argument1": 0.65,
+    "argument2": "minecraft:end/base_3d_noise"
+  }
+}

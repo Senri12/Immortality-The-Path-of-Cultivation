@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "J": "immortality:jade_block",
+    "R": "minecraft:redstone",
+    "D": "minecraft:diamond"
+  },
+  "pattern": [
+    "RDR",
+    "JJJ",
+    "RJR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:formation_core"
+  }
+}

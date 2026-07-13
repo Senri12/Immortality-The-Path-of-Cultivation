@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "immortality:jade_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "immortality:immortals_jade"
+  }
+}

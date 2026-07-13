@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "S": "minecraft:stone",
+    "J": "immortality:immortals_jade"
+  },
+  "pattern": [
+    "SJS",
+    "JSJ",
+    "SJS"
+  ],
+  "result": {
+    "count": 4,
+    "id": "immortality:spirit_stone"
+  }
+}

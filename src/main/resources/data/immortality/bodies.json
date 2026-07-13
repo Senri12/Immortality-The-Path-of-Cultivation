@@ -1,0 +1,22 @@
+[
+  {
+    "id": "none",
+    "breakthroughBonus": 0.0,
+    "stabilityBonus": 0.0
+  },
+  {
+    "id": "iron_body",
+    "breakthroughBonus": 0.06,
+    "stabilityBonus": 0.10
+  },
+  {
+    "id": "spirit_vessel",
+    "breakthroughBonus": 0.12,
+    "stabilityBonus": 0.04
+  },
+  {
+    "id": "demonic_veins",
+    "breakthroughBonus": 0.18,
+    "stabilityBonus": -0.12
+  }
+]

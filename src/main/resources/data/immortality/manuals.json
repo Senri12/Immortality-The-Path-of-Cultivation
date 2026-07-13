@@ -1,0 +1,118 @@
+[
+  {
+    "id": "wandering_cloud_manual",
+    "itemId": "immortality:wandering_cloud_manual",
+    "maxStage": "NASCENT_SOUL",
+    "allowedResearchIds": [
+      "qi_sense",
+      "meridian_cycle",
+      "foundation_blueprint",
+      "core_seal",
+      "golden_core_method",
+      "core_flame_refinement",
+      "nascent_soul_seed",
+      "spirit_vessel_method",
+      "nascent_soul_manifestation"
+    ],
+    "grantedTechniques": [
+      "wandering_breath"
+    ],
+    "insightPool": [
+      "breath_of_qi",
+      "meridian_map",
+      "foundation_schema",
+      "core_seed",
+      "golden_core",
+      "inner_flame",
+      "nascent_seed",
+      "soul_projection",
+      "spirit_vessel"
+    ],
+    "breakthroughBonus": 0.03,
+    "deviationModifier": -0.02
+  },
+  {
+    "id": "crimson_flame_manual",
+    "itemId": "immortality:crimson_flame_manual",
+    "maxStage": "CORE_FORMATION",
+    "allowedResearchIds": [
+      "qi_sense",
+      "meridian_cycle",
+      "foundation_blueprint",
+      "core_seal",
+      "golden_core_method",
+      "core_flame_refinement"
+    ],
+    "grantedTechniques": [
+      "crimson_heartbeat"
+    ],
+    "insightPool": [
+      "breath_of_qi",
+      "flame_resonance",
+      "meridian_map",
+      "foundation_schema",
+      "core_seed",
+      "golden_core",
+      "inner_flame"
+    ],
+    "breakthroughBonus": 0.05,
+    "deviationModifier": 0.04
+  },
+  {
+    "id": "stone_body_manual",
+    "itemId": "immortality:stone_body_manual",
+    "maxStage": "FOUNDATION_ESTABLISHMENT",
+    "allowedResearchIds": [
+      "qi_sense",
+      "meridian_cycle",
+      "foundation_blueprint",
+      "iron_body_method",
+      "core_seal",
+      "golden_core_method"
+    ],
+    "grantedTechniques": [
+      "stone_marrow"
+    ],
+    "insightPool": [
+      "breath_of_qi",
+      "bone_forging",
+      "foundation_schema",
+      "core_seed",
+      "golden_core"
+    ],
+    "breakthroughBonus": 0.01,
+    "deviationModifier": -0.01
+  },
+  {
+    "id": "omniscience_manual",
+    "itemId": "immortality:omniscience_manual",
+    "maxStage": "VOID_TRIBULANT",
+    "allowedResearchIds": [
+      "*"
+    ],
+    "grantedTechniques": [
+      "omniscient_mirror"
+    ],
+    "insightPool": [
+      "breath_of_qi",
+      "meridian_map",
+      "foundation_schema",
+      "core_seed",
+      "golden_core",
+      "inner_flame",
+      "nascent_seed",
+      "soul_projection",
+      "dao_heart",
+      "severing_intent",
+      "yin_flow",
+      "yang_form",
+      "karma_thread",
+      "nirvana_cycle",
+      "void_mark",
+      "bone_forging",
+      "spirit_vessel"
+    ],
+    "breakthroughBonus": 0.08,
+    "deviationModifier": -0.04
+  }
+]

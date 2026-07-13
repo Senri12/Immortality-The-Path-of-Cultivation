@@ -1,0 +1,38 @@
+[
+  {
+    "id": "spirit_beast_core",
+    "itemId": "immortality:spirit_beast_core",
+    "breakthroughBonus": 0.12,
+    "stabilityBonus": 0.02,
+    "deviationPenalty": 0.03,
+    "purityBonus": 0.04,
+    "compatibleBodies": [
+      "none",
+      "spirit_vessel"
+    ]
+  },
+  {
+    "id": "flame_beast_core",
+    "itemId": "immortality:flame_beast_core",
+    "breakthroughBonus": 0.16,
+    "stabilityBonus": -0.04,
+    "deviationPenalty": 0.12,
+    "purityBonus": 0.01,
+    "compatibleBodies": [
+      "none",
+      "demonic_veins"
+    ]
+  },
+  {
+    "id": "earth_beast_core",
+    "itemId": "immortality:earth_beast_core",
+    "breakthroughBonus": 0.10,
+    "stabilityBonus": 0.08,
+    "deviationPenalty": 0.02,
+    "purityBonus": 0.02,
+    "compatibleBodies": [
+      "none",
+      "iron_body"
+    ]
+  }
+]

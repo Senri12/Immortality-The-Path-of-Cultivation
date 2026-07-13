@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "immortality:block/jade_slab"
+    },
+    "type=top": {
+      "model": "immortality:block/jade_slab_top"
+    },
+    "type=double": {
+      "model": "immortality:block/jade_planks"
+    }
+  }
+}

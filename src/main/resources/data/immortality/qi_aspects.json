@@ -1,0 +1,102 @@
+[
+  {
+    "id": "water",
+    "connections": ["wood", "yin", "spirit"]
+  },
+  {
+    "id": "fire",
+    "connections": ["yang", "metal", "spirit"]
+  },
+  {
+    "id": "wood",
+    "connections": ["water", "body", "spirit"]
+  },
+  {
+    "id": "earth",
+    "connections": ["metal", "body", "yin"]
+  },
+  {
+    "id": "metal",
+    "connections": ["earth", "fire", "void", "yang"]
+  },
+  {
+    "id": "yin",
+    "connections": ["water", "earth", "soul", "void"]
+  },
+  {
+    "id": "yang",
+    "connections": ["fire", "metal", "body", "spirit"]
+  },
+  {
+    "id": "body",
+    "connections": ["earth", "wood", "yang"]
+  },
+  {
+    "id": "soul",
+    "connections": ["yin", "spirit", "void"]
+  },
+  {
+    "id": "spirit",
+    "connections": ["water", "wood", "fire", "yang", "soul"]
+  },
+  {
+    "id": "void",
+    "connections": ["yin", "metal", "soul"]
+  },
+  {
+    "id": "mist",
+    "connections": ["water", "yin", "spirit", "frost", "dream"]
+  },
+  {
+    "id": "bloom",
+    "connections": ["water", "wood", "spirit", "thunder"]
+  },
+  {
+    "id": "ember",
+    "connections": ["fire", "yang", "blood", "ash"]
+  },
+  {
+    "id": "ash",
+    "connections": ["fire", "earth", "ember", "ore"]
+  },
+  {
+    "id": "ore",
+    "connections": ["earth", "metal", "ash", "echo"]
+  },
+  {
+    "id": "thunder",
+    "connections": ["wood", "yang", "bloom", "dawn"]
+  },
+  {
+    "id": "frost",
+    "connections": ["water", "metal", "mist", "void"]
+  },
+  {
+    "id": "blood",
+    "connections": ["body", "fire", "ember", "marrow"]
+  },
+  {
+    "id": "echo",
+    "connections": ["metal", "soul", "ore", "karma"]
+  },
+  {
+    "id": "dream",
+    "connections": ["yin", "spirit", "mist", "abyss"]
+  },
+  {
+    "id": "dawn",
+    "connections": ["yang", "spirit", "thunder", "karma"]
+  },
+  {
+    "id": "abyss",
+    "connections": ["void", "yin", "dream", "soul"]
+  },
+  {
+    "id": "marrow",
+    "connections": ["body", "earth", "blood", "ore"]
+  },
+  {
+    "id": "karma",
+    "connections": ["soul", "yang", "echo", "dawn"]
+  }
+]

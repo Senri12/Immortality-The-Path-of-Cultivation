@@ -1,0 +1,17 @@
+{
+	"required": true,
+	"package": "immortality.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"PlayerEntityMixin",
+		"ServerPlayerEntityMixin",
+		"ItemStackMixin",
+		"LivingEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
