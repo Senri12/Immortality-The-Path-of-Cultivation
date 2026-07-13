@@ -1,5 +1,10 @@
 # 🌀 Immortality: The Path of Cultivation (Minecraft 1.21.11+)
 
+[![Minecraft](https://img.shields.io/badge/Minecraft-1.21.11-blue.svg?logo=minecraft&color=3F7E3C)](https://minecraft.net/)
+[![Fabric](https://img.shields.io/badge/Loader-Fabric-lightgrey.svg?logo=fabric&color=dbd5cc)](https://fabricmc.net/)
+[![Java](https://img.shields.io/badge/Java-21-red.svg?logo=oracle&color=ED8B00)](https://oracle.com/java/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 *Read this in: [English](#english) | [Русский](#русский)*
 
 ---
