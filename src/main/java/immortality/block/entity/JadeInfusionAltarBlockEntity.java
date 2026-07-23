@@ -91,8 +91,12 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 			return;
 		}
 
-		// 3. Check Qi cost
+		// 3. Check Stage & Qi cost
 		CultivationData data = CultivationManager.get(player);
+		if (data.stage().tier() < matched.minStage.tier()) {
+			player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("message.immortality.altar.insufficient_stage", matched.minStage.displayNameComponent()));
+			return;
+		}
 		if (data.currentQi() < matched.qiCost) {
 			player.sendSystemMessage(net.minecraft.network.chat.Component.translatable("message.immortality.altar.insufficient_qi", matched.qiCost, data.currentQi()));
 			return;
@@ -311,18 +315,23 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 		public final List<net.minecraft.world.item.Item> pedestalItems;
 		public final BiFunction<ItemStack, Level, ItemStack> resultFactory;
 		public final int qiCost;
+		public final immortality.cultivation.CultivationStage minStage;
 		public final Predicate<ItemStack> centralPredicate;
 
-		public InfusionRecipe(net.minecraft.world.item.Item centralItem, List<net.minecraft.world.item.Item> pedestalItems, int qiCost, Predicate<ItemStack> centralPredicate, BiFunction<ItemStack, Level, ItemStack> resultFactory) {
+		public InfusionRecipe(net.minecraft.world.item.Item centralItem, List<net.minecraft.world.item.Item> pedestalItems, immortality.cultivation.CultivationStage minStage, int qiCost, Predicate<ItemStack> centralPredicate, BiFunction<ItemStack, Level, ItemStack> resultFactory) {
 			this.centralItem = centralItem;
 			this.pedestalItems = pedestalItems;
+			this.minStage = minStage;
 			this.qiCost = qiCost;
 			this.centralPredicate = centralPredicate;
 			this.resultFactory = resultFactory;
 		}
 
 		public boolean matches(ItemStack central, List<ItemStack> pedestals) {
-			if (!central.is(this.centralItem) || !this.centralPredicate.test(central)) {
+			if (this.centralItem != null && !central.is(this.centralItem)) {
+				return false;
+			}
+			if (this.centralPredicate != null && !this.centralPredicate.test(central)) {
 				return false;
 			}
 
@@ -348,41 +357,24 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 	private static final List<InfusionRecipe> RECIPES = new ArrayList<>();
 
 	static {
-		// Recipe 1: Attuned Blade
+		Predicate<ItemStack> isEquipment = stack -> !stack.isEmpty() && (stack.isDamageableItem() || stack.getMaxStackSize() == 1);
+
+		// Recipe 1: Universal Tempered Equipment
 		RECIPES.add(new InfusionRecipe(
-			net.minecraft.world.item.Items.DIAMOND_SWORD,
+			null,
 			Arrays.asList(
 				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE),
 				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE),
 				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE),
 				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE)
 			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
 			100,
-			stack -> !stack.has(Immortality.SPIRITUAL_BLUEPRINT),
+			isEquipment,
 			(central, level) -> {
 				ItemStack result = central.copy();
-				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
-					Collections.emptyList(),
-					SpiritualBlueprintComponent.TEMPERED,
-					100, 100
-				));
-				return result;
-			}
-		));
-
-		// Recipe 2: Flame Jade Blade
-		RECIPES.add(new InfusionRecipe(
-			net.minecraft.world.item.Items.DIAMOND_SWORD,
-			Arrays.asList(
-				Immortality.FLAME_BEAST_CORE,
-				Immortality.IMMORTALS_JADE
-			),
-			200,
-			stack -> stack.has(Immortality.SPIRITUAL_BLUEPRINT),
-			(central, level) -> {
-				ItemStack result = central.copy();
-				List<immortality.item.ModifierInstance> mods = new ArrayList<>();
-				mods.add(new immortality.item.ModifierInstance("ignis", 2));
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
 				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
 					mods,
 					SpiritualBlueprintComponent.TEMPERED,
@@ -392,24 +384,50 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 			}
 		));
 
-		// Recipe 3: Earth Jade Chestplate
+		// Recipe 2: Ignis Flame Infusion (Any weapon/equipment)
 		RECIPES.add(new InfusionRecipe(
-			net.minecraft.world.item.Items.DIAMOND_CHESTPLATE,
+			null,
+			Arrays.asList(
+				Immortality.FLAME_BEAST_CORE,
+				Immortality.IMMORTALS_JADE
+			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
+			200,
+			isEquipment,
+			(central, level) -> {
+				ItemStack result = central.copy();
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
+				mods.removeIf(m -> m.id().equals("ignis"));
+				mods.add(new immortality.item.ModifierInstance("ignis", 2));
+				int flags = current != null ? current.flags() : SpiritualBlueprintComponent.TEMPERED;
+				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
+					mods, flags, 100, 100
+				));
+				return result;
+			}
+		));
+
+		// Recipe 3: Vigor Life Infusion (Any armor/equipment)
+		RECIPES.add(new InfusionRecipe(
+			null,
 			Arrays.asList(
 				Immortality.EARTH_BEAST_CORE,
 				Immortality.IMMORTALS_JADE,
 				Immortality.IMMORTALS_JADE
 			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
 			300,
-			stack -> true,
+			isEquipment,
 			(central, level) -> {
 				ItemStack result = central.copy();
-				List<immortality.item.ModifierInstance> mods = new ArrayList<>();
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
+				mods.removeIf(m -> m.id().equals("vigor"));
 				mods.add(new immortality.item.ModifierInstance("vigor", 3));
+				int flags = current != null ? current.flags() : SpiritualBlueprintComponent.TEMPERED;
 				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
-					mods,
-					SpiritualBlueprintComponent.TEMPERED,
-					100, 100
+					mods, flags, 100, 100
 				));
 				return result;
 			}
@@ -424,6 +442,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				Immortality.IMMORTALS_JADE,
 				Immortality.IMMORTALS_JADE
 			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
 			150,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.FORMATION_COMPASS)
@@ -437,6 +456,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				net.minecraft.world.item.Items.PAPER,
 				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE)
 			),
+			immortality.cultivation.CultivationStage.MORTAL,
 			50,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.BAMBOO_FLAG)
@@ -450,6 +470,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				Immortality.IMMORTALS_JADE,
 				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE)
 			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
 			250,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.JADE_FLAG)
@@ -465,6 +486,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				Immortality.IMMORTALS_JADE,
 				net.minecraft.world.item.Items.DIAMOND
 			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
 			400,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.FORMATION_CORE)
@@ -476,6 +498,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 			Arrays.asList(
 				Immortality.SPIRIT_BEAST_CORE
 			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
 			100,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.SPIRIT_CONVERGENCE_RUNE)
@@ -488,6 +511,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				Immortality.EARTH_BEAST_CORE,
 				net.minecraft.world.item.Items.SHIELD
 			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
 			150,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.TAIJI_SHIELD_RUNE)
@@ -500,6 +524,7 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				Immortality.SPIRIT_BEAST_CORE,
 				net.minecraft.world.item.Items.FERMENTED_SPIDER_EYE
 			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
 			150,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.MIRAGE_CONCEALMENT_RUNE)
@@ -512,9 +537,166 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 				Immortality.FLAME_BEAST_CORE,
 				net.minecraft.world.item.Items.IRON_SWORD
 			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
 			200,
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.SWORD_FOREST_RUNE)
+		));
+
+		// Recipe 12: Heavenly Lightning Rune
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.STONE,
+			Arrays.asList(
+				Immortality.LIGHTNING_BEAST_CORE,
+				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE)
+			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
+			250,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.HEAVENLY_LIGHTNING_RUNE)
+		));
+
+		// Recipe 13: Frost Domain Rune
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.STONE,
+			Arrays.asList(
+				Immortality.FROST_BEAST_CORE,
+				net.minecraft.world.item.Items.ICE
+			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
+			250,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.FROST_DOMAIN_RUNE)
+		));
+
+		// Recipe 14: Life Spring Rune
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.STONE,
+			Arrays.asList(
+				Immortality.SPIRIT_GRASS,
+				Immortality.SPIRIT_BEAST_CORE
+			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
+			120,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.LIFE_SPRING_RUNE)
+		));
+
+		// Recipe 15: Gravity Suppression Rune
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.STONE,
+			Arrays.asList(
+				Immortality.EARTH_BEAST_CORE,
+				Immortality.DRAGON_VEIN_STONE
+			),
+			immortality.cultivation.CultivationStage.CORE_FORMATION,
+			350,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.GRAVITY_SUPPRESSION_RUNE)
+		));
+
+		// Recipe 16: Flame Lotus Rune
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.STONE,
+			Arrays.asList(
+				Immortality.FLAME_BEAST_CORE,
+				Immortality.PHOENIX_FEATHER
+			),
+			immortality.cultivation.CultivationStage.CORE_FORMATION,
+			350,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.FLAME_LOTUS_RUNE)
+		));
+
+		// Recipe 17: Qi Sealing Rune
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.STONE,
+			Arrays.asList(
+				Immortality.IMMORTALS_JADE,
+				Immortality.SPIRIT_BEAST_CORE,
+				Immortality.DRAGON_VEIN_STONE
+			),
+			immortality.cultivation.CultivationStage.CORE_FORMATION,
+			400,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.QI_SEALING_RUNE)
+		));
+
+		// Recipe 18: Electrum Lightning Infusion (Any weapon/armor)
+		RECIPES.add(new InfusionRecipe(
+			null,
+			Arrays.asList(
+				Immortality.LIGHTNING_BEAST_CORE,
+				Immortality.HEAVENLY_IRON
+			),
+			immortality.cultivation.CultivationStage.CORE_FORMATION,
+			300,
+			isEquipment,
+			(central, level) -> {
+				ItemStack result = central.copy();
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
+				mods.removeIf(m -> m.id().equals("electrum"));
+				mods.add(new immortality.item.ModifierInstance("electrum", 3));
+				int flags = current != null ? current.flags() : SpiritualBlueprintComponent.TEMPERED;
+				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
+					mods, flags, 120, 120
+				));
+				return result;
+			}
+		));
+
+		// Recipe 19: Unyielding Fortitude Infusion (Any armor/shield)
+		RECIPES.add(new InfusionRecipe(
+			null,
+			Arrays.asList(
+				Immortality.DRAGON_VEIN_STONE,
+				Immortality.HEAVENLY_IRON,
+				Immortality.IMMORTALS_JADE
+			),
+			immortality.cultivation.CultivationStage.NASCENT_SOUL,
+			450,
+			isEquipment,
+			(central, level) -> {
+				ItemStack result = central.copy();
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
+				mods.removeIf(m -> m.id().equals("unyielding"));
+				mods.add(new immortality.item.ModifierInstance("unyielding", 3));
+				int flags = current != null ? current.flags() : SpiritualBlueprintComponent.TEMPERED;
+				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
+					mods, flags, 150, 150
+				));
+				return result;
+			}
+		));
+
+		// Recipe 20: Lightning Talisman Infusion
+		RECIPES.add(new InfusionRecipe(
+			net.minecraft.world.item.Items.PAPER,
+			Arrays.asList(
+				Immortality.LIGHTNING_BEAST_CORE,
+				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE),
+				net.minecraft.world.item.Item.byBlock(Immortality.SPIRIT_STONE)
+			),
+			immortality.cultivation.CultivationStage.QI_GATHERING,
+			100,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.LIGHTNING_TALISMAN)
+		));
+
+		// Recipe 21: Golden Core Pill Infusion
+		RECIPES.add(new InfusionRecipe(
+			Immortality.FOUNDATION_PILL,
+			Arrays.asList(
+				Immortality.SPIRIT_GRASS,
+				Immortality.FLAME_BEAST_CORE,
+				Immortality.IMMORTALS_JADE
+			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
+			250,
+			stack -> true,
+			(central, level) -> new ItemStack(Immortality.GOLDEN_CORE_PILL)
 		));
 	}
 }

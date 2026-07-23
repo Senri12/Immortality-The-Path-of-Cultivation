@@ -31,6 +31,7 @@ import immortality.network.ResearchLinkPayload;
 import immortality.network.ResearchStudyScreenPayload;
 import immortality.network.TechniqueActionPayload;
 import immortality.network.TechniqueScreenPayload;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
@@ -48,6 +49,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -87,10 +89,20 @@ public class Immortality implements ModInitializer {
 	public static final Item SPIRIT_BEAST_CORE = registerItem("spirit_beast_core", new Item(itemProperties("spirit_beast_core")));
 	public static final Item FLAME_BEAST_CORE = registerItem("flame_beast_core", new Item(itemProperties("flame_beast_core")));
 	public static final Item EARTH_BEAST_CORE = registerItem("earth_beast_core", new Item(itemProperties("earth_beast_core")));
+	public static final Item LIGHTNING_BEAST_CORE = registerItem("lightning_beast_core", new Item(itemProperties("lightning_beast_core")));
+	public static final Item FROST_BEAST_CORE = registerItem("frost_beast_core", new Item(itemProperties("frost_beast_core")));
+	public static final Item SPIRIT_GRASS = registerItem("spirit_grass", new Item(itemProperties("spirit_grass")));
+	public static final Item DRAGON_VEIN_STONE = registerItem("dragon_vein_stone", new Item(itemProperties("dragon_vein_stone")));
+	public static final Item HEAVENLY_IRON = registerItem("heavenly_iron", new Item(itemProperties("heavenly_iron")));
+	public static final Item FOUNDATION_PILL = registerItem("foundation_pill", new immortality.item.SpiritPillItem(50, 0.10D, 0.10D, itemProperties("foundation_pill")));
+	public static final Item GOLDEN_CORE_PILL = registerItem("golden_core_pill", new immortality.item.SpiritPillItem(120, 0.15D, 0.20D, itemProperties("golden_core_pill")));
+	public static final Item PHOENIX_FEATHER = registerItem("phoenix_feather", new Item(itemProperties("phoenix_feather")));
+	public static final Item LIGHTNING_TALISMAN = registerItem("lightning_talisman", new Item(itemProperties("lightning_talisman")));
 	public static final Item WANDERING_CLOUD_MANUAL = registerItem("wandering_cloud_manual", new ManualItem("wandering_cloud_manual", itemProperties("wandering_cloud_manual")));
 	public static final Item CRIMSON_FLAME_MANUAL = registerItem("crimson_flame_manual", new ManualItem("crimson_flame_manual", itemProperties("crimson_flame_manual")));
 	public static final Item STONE_BODY_MANUAL = registerItem("stone_body_manual", new ManualItem("stone_body_manual", itemProperties("stone_body_manual")));
 	public static final Item OMNISCIENCE_MANUAL = registerItem("omniscience_manual", new ManualItem("omniscience_manual", itemProperties("omniscience_manual")));
+	public static final Item NINE_DRAGONS_MANUAL = registerItem("nine_dragons_manual", new ManualItem("nine_dragons_manual", itemProperties("nine_dragons_manual")));
 	public static final Item IMMORTALS_JADE = registerItem("immortals_jade", new Item(itemProperties("immortals_jade")));
 	
 	public static final Item FORMATION_COMPASS = registerItem("formation_compass", new immortality.item.FormationCompassItem(itemProperties("formation_compass").stacksTo(1)));
@@ -98,6 +110,82 @@ public class Immortality implements ModInitializer {
 	public static final Item TAIJI_SHIELD_RUNE = registerItem("taiji_shield_rune", new Item(itemProperties("taiji_shield_rune")));
 	public static final Item MIRAGE_CONCEALMENT_RUNE = registerItem("mirage_concealment_rune", new Item(itemProperties("mirage_concealment_rune")));
 	public static final Item SWORD_FOREST_RUNE = registerItem("sword_forest_rune", new Item(itemProperties("sword_forest_rune")));
+	public static final Item HEAVENLY_LIGHTNING_RUNE = registerItem("heavenly_lightning_rune", new Item(itemProperties("heavenly_lightning_rune")));
+	public static final Item FROST_DOMAIN_RUNE = registerItem("frost_domain_rune", new Item(itemProperties("frost_domain_rune")));
+	public static final Item LIFE_SPRING_RUNE = registerItem("life_spring_rune", new Item(itemProperties("life_spring_rune")));
+	public static final Item GRAVITY_SUPPRESSION_RUNE = registerItem("gravity_suppression_rune", new Item(itemProperties("gravity_suppression_rune")));
+	public static final Item FLAME_LOTUS_RUNE = registerItem("flame_lotus_rune", new Item(itemProperties("flame_lotus_rune")));
+	public static final Item QI_SEALING_RUNE = registerItem("qi_sealing_rune", new Item(itemProperties("qi_sealing_rune")));
+
+	public static final EntityType<immortality.entity.SpiritBeastEntity> SPIRIT_BEAST = Registry.register(
+		BuiltInRegistries.ENTITY_TYPE,
+		id("spirit_beast"),
+		EntityType.Builder.of(immortality.entity.SpiritBeastEntity::new, net.minecraft.world.entity.MobCategory.MONSTER)
+			.sized(0.9F, 1.2F)
+			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("spirit_beast")))
+	);
+
+	public static final EntityType<immortality.entity.TribulationLordEntity> TRIBULATION_LORD = Registry.register(
+		BuiltInRegistries.ENTITY_TYPE,
+		id("tribulation_lord"),
+		EntityType.Builder.of(immortality.entity.TribulationLordEntity::new, net.minecraft.world.entity.MobCategory.MONSTER)
+			.sized(1.4F, 2.2F)
+			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("tribulation_lord")))
+	);
+
+	public static final EntityType<immortality.entity.FlameSalamanderEntity> FLAME_SALAMANDER = Registry.register(
+		BuiltInRegistries.ENTITY_TYPE,
+		id("flame_salamander"),
+		EntityType.Builder.of(immortality.entity.FlameSalamanderEntity::new, net.minecraft.world.entity.MobCategory.MONSTER)
+			.sized(0.8F, 0.7F)
+			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("flame_salamander")))
+	);
+
+	public static final EntityType<immortality.entity.FrostFoxEntity> FROST_FOX = Registry.register(
+		BuiltInRegistries.ENTITY_TYPE,
+		id("frost_fox"),
+		EntityType.Builder.of(immortality.entity.FrostFoxEntity::new, net.minecraft.world.entity.MobCategory.MONSTER)
+			.sized(0.7F, 0.7F)
+			.build(ResourceKey.create(Registries.ENTITY_TYPE, id("frost_fox")))
+	);
+
+	public static final Item SPIRIT_BEAST_SPAWN_EGG = registerItem(
+		"spirit_beast_spawn_egg",
+		new immortality.item.SpiritBeastSpawnEggItem(itemProperties("spirit_beast_spawn_egg"))
+	);
+
+	public static final Item TRIBULATION_LORD_SPAWN_EGG = registerItem(
+		"tribulation_lord_spawn_egg",
+		new immortality.item.ModSpawnEggItem(() -> TRIBULATION_LORD, itemProperties("tribulation_lord_spawn_egg"))
+	);
+
+	public static final Item FLAME_SALAMANDER_SPAWN_EGG = registerItem(
+		"flame_salamander_spawn_egg",
+		new immortality.item.ModSpawnEggItem(() -> FLAME_SALAMANDER, itemProperties("flame_salamander_spawn_egg"))
+	);
+
+	public static final Item FROST_FOX_SPAWN_EGG = registerItem(
+		"frost_fox_spawn_egg",
+		new immortality.item.ModSpawnEggItem(() -> FROST_FOX, itemProperties("frost_fox_spawn_egg"))
+	);
+
+	public static final Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> ANCIENT_PAGODA_FEATURE = Registry.register(
+		BuiltInRegistries.FEATURE,
+		id("ancient_pagoda"),
+		new immortality.worldgen.feature.AncientPagodaFeature(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.CODEC)
+	);
+
+	public static final Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> RUINED_DAO_SHRINE_FEATURE = Registry.register(
+		BuiltInRegistries.FEATURE,
+		id("ruined_dao_shrine"),
+		new immortality.worldgen.feature.RuinedDaoShrineFeature(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.CODEC)
+	);
+
+	public static final Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> SPIRIT_VEIN_GROTTO_FEATURE = Registry.register(
+		BuiltInRegistries.FEATURE,
+		id("spirit_vein_grotto"),
+		new immortality.worldgen.feature.SpiritVeinGrottoFeature(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.CODEC)
+	);
 
 	public static final Block JADE_PEDESTAL = registerBlock(
 		"jade_pedestal",
@@ -187,6 +275,12 @@ public class Immortality implements ModInitializer {
 		new immortality.block.FormationCoreBlock(blockProperties("formation_core", BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_BRICKS).strength(3.0F)))
 	);
 
+	public static final net.minecraft.world.level.levelgen.feature.Feature<net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration> PEDESTAL_SHRINE_FEATURE = Registry.register(
+		BuiltInRegistries.FEATURE,
+		id("pedestal_shrine"),
+		new immortality.worldgen.feature.PedestalShrineFeature(net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration.CODEC)
+	);
+
 	public static final net.minecraft.world.level.block.entity.BlockEntityType<immortality.block.entity.FormationFlagBlockEntity> FORMATION_FLAG_ENTITY = Registry.register(
 		BuiltInRegistries.BLOCK_ENTITY_TYPE,
 		id("formation_flag"),
@@ -215,6 +309,15 @@ public class Immortality implements ModInitializer {
 				output.accept(SPIRIT_BEAST_CORE);
 				output.accept(FLAME_BEAST_CORE);
 				output.accept(EARTH_BEAST_CORE);
+				output.accept(LIGHTNING_BEAST_CORE);
+				output.accept(FROST_BEAST_CORE);
+				output.accept(SPIRIT_GRASS);
+				output.accept(DRAGON_VEIN_STONE);
+				output.accept(HEAVENLY_IRON);
+				output.accept(FOUNDATION_PILL);
+				output.accept(GOLDEN_CORE_PILL);
+				output.accept(PHOENIX_FEATHER);
+				output.accept(LIGHTNING_TALISMAN);
 				output.accept(IMMORTALS_JADE);
 				output.accept(SPIRIT_STONE);
 				output.accept(JADE_BLOCK);
@@ -228,6 +331,7 @@ public class Immortality implements ModInitializer {
 				output.accept(CRIMSON_FLAME_MANUAL);
 				output.accept(STONE_BODY_MANUAL);
 				output.accept(OMNISCIENCE_MANUAL);
+				output.accept(NINE_DRAGONS_MANUAL);
 				output.accept(MEDITATION_MAT);
 				output.accept(ENLIGHTENMENT_ALTAR);
 				output.accept(RESEARCH_STUDY);
@@ -240,12 +344,107 @@ public class Immortality implements ModInitializer {
 				output.accept(TAIJI_SHIELD_RUNE);
 				output.accept(MIRAGE_CONCEALMENT_RUNE);
 				output.accept(SWORD_FOREST_RUNE);
+				output.accept(HEAVENLY_LIGHTNING_RUNE);
+				output.accept(FROST_DOMAIN_RUNE);
+				output.accept(LIFE_SPRING_RUNE);
+				output.accept(GRAVITY_SUPPRESSION_RUNE);
+				output.accept(FLAME_LOTUS_RUNE);
+				output.accept(QI_SEALING_RUNE);
+				output.accept(SPIRIT_BEAST_SPAWN_EGG);
+				output.accept(TRIBULATION_LORD_SPAWN_EGG);
+				output.accept(FLAME_SALAMANDER_SPAWN_EGG);
+				output.accept(FROST_FOX_SPAWN_EGG);
 			})
 			.build()
 	);
 
 	@Override
 	public void onInitialize() {
+		net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry.register(SPIRIT_BEAST, immortality.entity.SpiritBeastEntity.createAttributes());
+		net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry.register(TRIBULATION_LORD, immortality.entity.TribulationLordEntity.createAttributes());
+		net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry.register(FLAME_SALAMANDER, immortality.entity.FlameSalamanderEntity.createAttributes());
+		net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry.register(FROST_FOX, immortality.entity.FrostFoxEntity.createAttributes());
+		
+		net.minecraft.world.entity.SpawnPlacements.register(
+			SPIRIT_BEAST,
+			net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND,
+			net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+			immortality.entity.SpiritBeastEntity::checkSpiritBeastSpawnRules
+		);
+
+		net.minecraft.world.entity.SpawnPlacements.register(
+			TRIBULATION_LORD,
+			net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND,
+			net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+			immortality.entity.TribulationLordEntity::checkSpawnRules
+		);
+
+		net.minecraft.world.entity.SpawnPlacements.register(
+			FLAME_SALAMANDER,
+			net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND,
+			net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+			immortality.entity.FlameSalamanderEntity::checkSpawnRules
+		);
+
+		net.minecraft.world.entity.SpawnPlacements.register(
+			FROST_FOX,
+			net.minecraft.world.entity.SpawnPlacementTypes.ON_GROUND,
+			net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+			immortality.entity.FrostFoxEntity::checkSpawnRules
+		);
+
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addSpawn(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.entity.MobCategory.MONSTER,
+			SPIRIT_BEAST,
+			6,
+			1, 2
+		);
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addSpawn(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.entity.MobCategory.MONSTER,
+			EntityType.ZOMBIE,
+			95, 2, 4
+		);
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addSpawn(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.entity.MobCategory.MONSTER,
+			EntityType.SKELETON,
+			80, 2, 4
+		);
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addSpawn(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.entity.MobCategory.MONSTER,
+			EntityType.SPIDER,
+			80, 2, 4
+		);
+
+		ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature> pagodaKey = ResourceKey.create(
+			Registries.PLACED_FEATURE, id("ancient_pagoda")
+		);
+		ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature> shrineKey = ResourceKey.create(
+			Registries.PLACED_FEATURE, id("ruined_dao_shrine")
+		);
+		ResourceKey<net.minecraft.world.level.levelgen.placement.PlacedFeature> grottoKey = ResourceKey.create(
+			Registries.PLACED_FEATURE, id("spirit_vein_grotto")
+		);
+
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addFeature(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.level.levelgen.GenerationStep.Decoration.SURFACE_STRUCTURES,
+			pagodaKey
+		);
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addFeature(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.level.levelgen.GenerationStep.Decoration.SURFACE_STRUCTURES,
+			shrineKey
+		);
+		net.fabricmc.fabric.api.biome.v1.BiomeModifications.addFeature(
+			net.fabricmc.fabric.api.biome.v1.BiomeSelectors.foundInOverworld(),
+			net.minecraft.world.level.levelgen.GenerationStep.Decoration.UNDERGROUND_STRUCTURES,
+			grottoKey
+		);
+
 		PayloadTypeRegistry.playS2C().register(CultivationSyncPayload.TYPE, CultivationSyncPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(AltarResearchScreenPayload.TYPE, AltarResearchScreenPayload.CODEC);
 		PayloadTypeRegistry.playS2C().register(BreakthroughScreenPayload.TYPE, BreakthroughScreenPayload.CODEC);

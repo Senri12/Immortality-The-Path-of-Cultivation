@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "immortality:flame_beast_core",
+    "immortality:earth_beast_core",
+    "immortality:spirit_beast_core"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:nine_dragons_manual"
+  }
+}

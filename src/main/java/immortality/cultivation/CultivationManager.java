@@ -487,7 +487,12 @@ public final class CultivationManager {
 	private static final Identifier VIGOR_ID = Identifier.fromNamespaceAndPath("immortality", "vigor");
 
 	private static void applySpiritualModifiers(ServerPlayer player) {
+		CultivationData data = get(player);
+		float stageMult = 1.0F + (data.stage().tier() * 0.35F);
+
 		int vigorLvl = 0;
+		int swiftLvl = 0;
+		int unyieldingLvl = 0;
 		for (net.minecraft.world.entity.EquipmentSlot slot : net.minecraft.world.entity.EquipmentSlot.values()) {
 			ItemStack stack = player.getItemBySlot(slot);
 			if (stack != null && !stack.isEmpty()) {
@@ -496,6 +501,8 @@ public final class CultivationManager {
 					boolean broken = stack.isDamageableItem() && stack.getDamageValue() >= stack.getMaxDamage() - 1 && blueprint.hasFlag(SpiritualBlueprintComponent.TEMPERED);
 					if (!broken) {
 						vigorLvl += blueprint.getModifierLevel("vigor");
+						swiftLvl += blueprint.getModifierLevel("swift");
+						unyieldingLvl += blueprint.getModifierLevel("unyielding");
 					}
 				}
 			}
@@ -505,7 +512,7 @@ public final class CultivationManager {
 		if (attributeInstance != null) {
 			attributeInstance.removeModifier(VIGOR_ID);
 			if (vigorLvl > 0) {
-				double healthAmount = vigorLvl * 4.0D;
+				double healthAmount = vigorLvl * 4.0D * stageMult;
 				net.minecraft.world.entity.ai.attributes.AttributeModifier modifier = new net.minecraft.world.entity.ai.attributes.AttributeModifier(
 					VIGOR_ID,
 					healthAmount,
@@ -513,6 +520,16 @@ public final class CultivationManager {
 				);
 				attributeInstance.addTransientModifier(modifier);
 			}
+		}
+
+		if (swiftLvl > 0 && player.tickCount % 40 == 0) {
+			int amp = Math.min(4, (int) (swiftLvl * stageMult - 1));
+			player.addEffect(new MobEffectInstance(MobEffects.SPEED, 60, Math.max(0, amp), true, false, true));
+			player.addEffect(new MobEffectInstance(MobEffects.HASTE, 60, Math.max(0, amp), true, false, true));
+		}
+		if (unyieldingLvl > 0 && player.tickCount % 40 == 0) {
+			int amp = Math.min(3, (int) (unyieldingLvl * stageMult - 1));
+			player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, 60, Math.max(0, amp), true, false, true));
 		}
 	}
 

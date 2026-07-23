@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:dragon_vein_stone",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": { "min": 2, "max": 4 }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:heavenly_iron",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": { "min": 2, "max": 4 }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:golden_core_pill"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:lightning_beast_core"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:spirit_stone",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": { "min": 15, "max": 25 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

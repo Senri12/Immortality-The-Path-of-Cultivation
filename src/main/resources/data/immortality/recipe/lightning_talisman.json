@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:paper",
+    "immortality:lightning_beast_core"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:lightning_talisman"
+  }
+}

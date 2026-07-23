@@ -1,0 +1,62 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:spirit_beast_core",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "immortality:flame_beast_core",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immortality:frost_beast_core",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immortality:lightning_beast_core",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immortality:spirit_grass",
+          "weight": 15
+        },
+        {
+          "type": "minecraft:item",
+          "name": "immortality:spirit_stone",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

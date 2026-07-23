@@ -191,6 +191,18 @@ public class FormationCoreBlockEntity extends BlockEntity {
 			return ParticleTypes.WITCH;
 		} else if (this.rune.is(Immortality.SWORD_FOREST_RUNE)) {
 			return ParticleTypes.CRIT;
+		} else if (this.rune.is(Immortality.HEAVENLY_LIGHTNING_RUNE)) {
+			return ParticleTypes.ELECTRIC_SPARK;
+		} else if (this.rune.is(Immortality.FROST_DOMAIN_RUNE)) {
+			return ParticleTypes.SNOWFLAKE;
+		} else if (this.rune.is(Immortality.LIFE_SPRING_RUNE)) {
+			return ParticleTypes.HEART;
+		} else if (this.rune.is(Immortality.GRAVITY_SUPPRESSION_RUNE)) {
+			return ParticleTypes.ANGRY_VILLAGER;
+		} else if (this.rune.is(Immortality.FLAME_LOTUS_RUNE)) {
+			return ParticleTypes.FLAME;
+		} else if (this.rune.is(Immortality.QI_SEALING_RUNE)) {
+			return ParticleTypes.SOUL_FIRE_FLAME;
 		}
 		return ParticleTypes.PORTAL;
 	}
@@ -242,6 +254,63 @@ public class FormationCoreBlockEntity extends BlockEntity {
 				enemy.hurt(level.damageSources().magic(), 8.0F);
 				level.playSound((Player) null, enemy.blockPosition(), SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.BLOCKS, 0.8F, 1.1F);
 				level.sendParticles(ParticleTypes.SWEEP_ATTACK, enemy.getX(), enemy.getY() + 0.5, enemy.getZ(), 1, 0.0, 0.0, 0.0, 0.0);
+			}
+		}
+		else if (this.rune.is(Immortality.HEAVENLY_LIGHTNING_RUNE)) {
+			List<LivingEntity> enemies = level.getEntitiesOfClass(LivingEntity.class, zone, entity -> entity instanceof Enemy);
+			for (LivingEntity enemy : enemies) {
+				enemy.hurt(level.damageSources().lightningBolt(), 10.0F);
+				level.playSound((Player) null, enemy.blockPosition(), SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.BLOCKS, 0.8F, 1.2F);
+				level.sendParticles(ParticleTypes.ELECTRIC_SPARK, enemy.getX(), enemy.getY() + 1.0, enemy.getZ(), 5, 0.2, 0.4, 0.2, 0.1);
+			}
+		}
+		else if (this.rune.is(Immortality.FROST_DOMAIN_RUNE)) {
+			List<LivingEntity> enemies = level.getEntitiesOfClass(LivingEntity.class, zone, entity -> entity instanceof Enemy);
+			for (LivingEntity enemy : enemies) {
+				enemy.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 3));
+				enemy.setTicksFrozen(100);
+				enemy.hurt(level.damageSources().freeze(), 5.0F);
+				level.playSound((Player) null, enemy.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 0.6F, 1.5F);
+				level.sendParticles(ParticleTypes.SNOWFLAKE, enemy.getX(), enemy.getY() + 0.5, enemy.getZ(), 4, 0.2, 0.2, 0.2, 0.0);
+			}
+		}
+		else if (this.rune.is(Immortality.LIFE_SPRING_RUNE)) {
+			List<ServerPlayer> players = level.getEntitiesOfClass(ServerPlayer.class, zone);
+			for (ServerPlayer player : players) {
+				player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 40, 1, false, false, true));
+				player.addEffect(new MobEffectInstance(MobEffects.SATURATION, 20, 0, false, false, true));
+				level.sendParticles(ParticleTypes.HEART, player.getX(), player.getY() + 1.0, player.getZ(), 1, 0.1, 0.1, 0.1, 0.0);
+			}
+		}
+		else if (this.rune.is(Immortality.GRAVITY_SUPPRESSION_RUNE)) {
+			List<LivingEntity> enemies = level.getEntitiesOfClass(LivingEntity.class, zone, entity -> entity instanceof Enemy);
+			for (LivingEntity enemy : enemies) {
+				enemy.setDeltaMovement(enemy.getDeltaMovement().x, -0.8D, enemy.getDeltaMovement().z);
+				enemy.hurtMarked = true;
+				enemy.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 2));
+				level.sendParticles(ParticleTypes.CRIT, enemy.getX(), enemy.getY(), enemy.getZ(), 3, 0.2, 0.0, 0.2, 0.0);
+			}
+		}
+		else if (this.rune.is(Immortality.FLAME_LOTUS_RUNE)) {
+			List<LivingEntity> enemies = level.getEntitiesOfClass(LivingEntity.class, zone, entity -> entity instanceof Enemy);
+			for (LivingEntity enemy : enemies) {
+				enemy.setRemainingFireTicks(80);
+				enemy.hurt(level.damageSources().inFire(), 7.0F);
+				level.playSound((Player) null, enemy.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 0.7F, 1.0F);
+				level.sendParticles(ParticleTypes.FLAME, enemy.getX(), enemy.getY() + 0.5, enemy.getZ(), 6, 0.2, 0.3, 0.2, 0.05);
+			}
+		}
+		else if (this.rune.is(Immortality.QI_SEALING_RUNE)) {
+			List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, zone);
+			for (LivingEntity entity : entities) {
+				if (entity instanceof Enemy) {
+					entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 1));
+					entity.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
+				} else if (entity instanceof ServerPlayer player) {
+					immortality.cultivation.CultivationData data = immortality.cultivation.CultivationManager.get(player);
+					data.addDeviation(-0.01D);
+					immortality.cultivation.CultivationManager.sync(player);
+				}
 			}
 		}
 	}

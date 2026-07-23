@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:deepslate",
+    "immortality:earth_beast_core",
+    "immortality:spirit_stone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:dragon_vein_stone"
+  }
+}

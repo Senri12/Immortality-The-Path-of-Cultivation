@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "immortality:foundation_pill",
+    "immortality:spirit_grass",
+    "immortality:flame_beast_core",
+    "immortality:immortals_jade"
+  ],
+  "result": {
+    "count": 1,
+    "id": "immortality:golden_core_pill"
+  }
+}

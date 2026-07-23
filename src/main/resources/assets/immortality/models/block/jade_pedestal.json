@@ -1,6 +1,88 @@
 {
-  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "immortality:block/jade_block"
+    "particle": "immortality:block/jade_block",
+    "jade": "immortality:block/jade_block",
+    "gold": "minecraft:block/gold_block"
+  },
+  "elements": [
+    {
+      "name": "base",
+      "from": [2, 0, 2],
+      "to": [14, 3, 14],
+      "faces": {
+        "down":  {"uv": [2, 2, 14, 14], "texture": "#jade", "cullface": "down"},
+        "up":    {"uv": [2, 2, 14, 14], "texture": "#gold"},
+        "north": {"uv": [2, 13, 14, 16], "texture": "#jade"},
+        "south": {"uv": [2, 13, 14, 16], "texture": "#jade"},
+        "west":  {"uv": [2, 13, 14, 16], "texture": "#jade"},
+        "east":  {"uv": [2, 13, 14, 16], "texture": "#jade"}
+      }
+    },
+    {
+      "name": "pillar",
+      "from": [4, 3, 4],
+      "to": [12, 12, 12],
+      "faces": {
+        "north": {"uv": [4, 4, 12, 13], "texture": "#jade"},
+        "south": {"uv": [4, 4, 12, 13], "texture": "#jade"},
+        "west":  {"uv": [4, 4, 12, 13], "texture": "#jade"},
+        "east":  {"uv": [4, 4, 12, 13], "texture": "#jade"}
+      }
+    },
+    {
+      "name": "top_tray",
+      "from": [1, 12, 1],
+      "to": [15, 16, 15],
+      "faces": {
+        "down":  {"uv": [1, 1, 15, 15], "texture": "#gold"},
+        "up":    {"uv": [1, 1, 15, 15], "texture": "#jade"},
+        "north": {"uv": [1, 12, 15, 16], "texture": "#jade"},
+        "south": {"uv": [1, 12, 15, 16], "texture": "#jade"},
+        "west":  {"uv": [1, 12, 15, 16], "texture": "#jade"},
+        "east":  {"uv": [1, 12, 15, 16], "texture": "#jade"}
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [30, 225, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.625, 0.625, 0.625]
+    },
+    "ground": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 2, 0],
+      "scale": [0.25, 0.25, 0.25]
+    },
+    "fixed": {
+      "rotation": [0, 90, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "thirdperson_righthand": {
+      "rotation": [75, 45, 0],
+      "translation": [0, 2.5, 0],
+      "scale": [0.375, 0.375, 0.375]
+    },
+    "firstperson_righthand": {
+      "rotation": [0, 45, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [75, 45, 0],
+      "translation": [0, 2.5, 0],
+      "scale": [0.375, 0.375, 0.375]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 225, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.4, 0.4, 0.4]
+    },
+    "head": {
+      "rotation": [0, 180, 0],
+      "translation": [0, 13, 7],
+      "scale": [1, 1, 1]
+    }
   }
 }
