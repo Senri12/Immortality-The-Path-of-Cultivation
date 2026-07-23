@@ -1,76 +1,76 @@
-# 📜 Справочник всех команд мода Immortality: The Path of Cultivation
+# 📜 Full Command Reference — Immortality: The Path of Cultivation
 
-> 📚 Все подробные гайды и документация перенесены в папку [`guides/`](file:///c:/Users/shabu/Downloads/immortality-template-1.21.11/guides/README.md)
-> Полная версия этого гайда: [guides/COMMANDS_GUIDE.md](file:///c:/Users/shabu/Downloads/immortality-template-1.21.11/guides/COMMANDS_GUIDE.md)
+> 📚 All detailed guides and documentation have moved to the [`guides/`](guides/README.md) folder.
+> Full version of this guide: [guides/COMMANDS_GUIDE.md](guides/COMMANDS_GUIDE.md)
 
 ---
 
-## 🧘 1. Основные команды игрокa (`/cultivation`)
+## 🧘 1. Core Player Commands (`/cultivation`)
 
-| Команда | Описание |
+| Command | Description |
 | :--- | :--- |
-| `/cultivation` или `/cultivation status` | Показать текущий статус: Стадия, запас Ци, чистота, стабильность, тело, трактат и активная техника |
-| `/cultivation techniques` | Открыть интерактивный экран управления техниками |
-| `/cultivation effects` | Открыть экран распределения фокуса Ци (Голова, Руки, Торс, Ноги) |
-| `/cultivation breakthrough` | Начать попытку прорыва на следующую стадию культивации |
-| `/cultivation manual <id>` | Экипировать древний трактат по его ID *(например: `wandering_cloud_manual`, `crimson_flame_manual`, `stone_body_manual`, `omniscience_manual`, `nine_dragons_manual`)* |
+| `/cultivation` or `/cultivation status` | Show current status: Stage, Qi reserve, purity, stability, body, manual, and active technique |
+| `/cultivation techniques` | Open the interactive technique management screen |
+| `/cultivation effects` | Open the Qi focus allocation screen (Head, Hands, Torso, Legs) |
+| `/cultivation breakthrough` | Attempt a breakthrough to the next cultivation stage |
+| `/cultivation manual <id>` | Equip an ancient manual by its ID *(e.g. `wandering_cloud_manual`, `crimson_flame_manual`, `stone_body_manual`, `omniscience_manual`, `nine_dragons_manual`)* |
 
 ---
 
-## ⚡ 2. Команды техник и исследований (`/cultivation technique` / `research`)
+## ⚡ 2. Technique & Research Commands (`/cultivation technique` / `research`)
 
-| Команда | Описание |
+| Command | Description |
 | :--- | :--- |
-| `/cultivation technique next` | Переключить активную технику на следующую изученную |
-| `/cultivation technique clear` | Снять активную технику |
-| `/cultivation technique invoke` | Моментально использовать/вызвать активную технику |
-| `/cultivation technique <id>` | Установить активную технику по её ID *(например: `wandering_breath`, `crimson_heartbeat`, `stone_marrow`, `omniscient_mirror`, `nascent_avatar`, `karma_sight`)* |
-| `/cultivation research next` | Автоматически завершить доступное исследование с наименьшей стоимостью |
-| `/cultivation research <id>` | Завершить конкретное исследование по ID *(например: `qi_sense`, `meridian_cycle`, `iron_body_method`, `golden_core_method`)* |
+| `/cultivation technique next` | Switch the active technique to the next learned one |
+| `/cultivation technique clear` | Unequip the active technique |
+| `/cultivation technique invoke` | Instantly use/invoke the active technique |
+| `/cultivation technique <id>` | Set the active technique by its ID *(e.g. `wandering_breath`, `crimson_heartbeat`, `stone_marrow`, `omniscient_mirror`, `nascent_avatar`, `karma_sight`)* |
+| `/cultivation research next` | Automatically complete the cheapest available research |
+| `/cultivation research <id>` | Complete a specific research by ID *(e.g. `qi_sense`, `meridian_cycle`, `iron_body_method`, `golden_core_method`)* |
 
 ---
 
-## 🛠️ 3. Команды отладки и администратора (`/cultivation debug`)
+## 🛠️ 3. Debug & Admin Commands (`/cultivation debug`)
 
-*(Требуются права оператора / OP)*
+*(Operator/OP permissions required)*
 
-### Управление Стадиями и Ци:
-- `/cultivation debug stage <STAGE>` — Установить любую стадию культивации:
-  - `MORTAL` (Смертный)
-  - `QI_GATHERING` (Закаливание Ци)
-  - `FOUNDATION_ESTABLISHMENT` (Возведение Основания)
-  - `CORE_FORMATION` (Формирование Ядра)
-  - `NASCENT_SOUL` (Зарождающаяся Душа)
-  - `SPIRIT_SEVERING` (Отсечение Духа)
-  - `ASCENDANT` (Вознесение)
-  - `ILLUSORY_YIN` (Призрачный Инь)
-  - `CORPOREAL_YANG` (Плотский Янь)
-  - `NIRVANA_SCRYER` (Видящий Нирваны)
-  - `NIRVANA_CLEANSER` (Очищающий Нирвану)
-  - `VOID_TRIBULANT` (Испытуемый Пустоты)
-- `/cultivation debug next` — Поднять стадию на +1
-- `/cultivation debug prev` — Опустить стадию на -1
-- `/cultivation debug qi set <amount>` — Задать точное количество Ци
-- `/cultivation debug qi add <amount>` — Добавить указанное количество Ци
-- `/cultivation debug qi fill` — Полностью заполнить Ци до текущего максимума
+### Stage & Qi Management:
+- `/cultivation debug stage <STAGE>` — Set any cultivation stage:
+  - `MORTAL`
+  - `QI_GATHERING`
+  - `FOUNDATION_ESTABLISHMENT`
+  - `CORE_FORMATION`
+  - `NASCENT_SOUL`
+  - `SPIRIT_SEVERING`
+  - `ASCENDANT`
+  - `ILLUSORY_YIN`
+  - `CORPOREAL_YANG`
+  - `NIRVANA_SCRYER`
+  - `NIRVANA_CLEANSER`
+  - `VOID_TRIBULANT`
+- `/cultivation debug next` — Raise the stage by +1
+- `/cultivation debug prev` — Lower the stage by -1
+- `/cultivation debug qi set <amount>` — Set an exact Qi amount
+- `/cultivation debug qi add <amount>` — Add the specified amount of Qi
+- `/cultivation debug qi fill` — Fully fill Qi up to the current max
 
-### Управление Телом, Трактатами и Разблокировками:
-- `/cultivation debug body <id>` — Задать тело (`iron_body`, `spirit_vessel`, `demonic_veins`, `none`)
-- `/cultivation debug manual <id>` — Выдать и закрепить трактат
-- `/cultivation debug focus <id>` — Переключить фокус Ци (`head`, `hands`, `torso`, `legs`)
-- `/cultivation debug technique <id>` — Выдать конкретную технику
-- `/cultivation debug technique all` — Разблокировать абсолютно все техники
-- `/cultivation debug insight <id>` — Выдать озарение по ID
-- `/cultivation debug insight all` — Разблокировать все озарения
-- `/cultivation debug research prepare <id>` — Подготовить исследование на доске изучения
-- `/cultivation debug research <id>` — Мгновенно изучить исследование
-- `/cultivation debug research all` — Разблокировать всё древо исследований
+### Body, Manual & Unlock Management:
+- `/cultivation debug body <id>` — Set body constitution (`iron_body`, `spirit_vessel`, `demonic_veins`, `none`)
+- `/cultivation debug manual <id>` — Grant and equip a manual
+- `/cultivation debug focus <id>` — Switch Qi focus (`head`, `hands`, `torso`, `legs`)
+- `/cultivation debug technique <id>` — Grant a specific technique
+- `/cultivation debug technique all` — Unlock absolutely all techniques
+- `/cultivation debug insight <id>` — Grant an insight by ID
+- `/cultivation debug insight all` — Unlock all insights
+- `/cultivation debug research prepare <id>` — Prepare a research on the study board
+- `/cultivation debug research <id>` — Instantly complete a research
+- `/cultivation debug research all` — Unlock the entire research tree
 
 ---
 
-## 🏛️ 4. Команды Спавна Структур (`/place feature`)
+## 🏛️ 4. Structure Spawn Commands (`/place feature`)
 
-Позволяют моментально сгенерировать постройку прямо перед собой:
+Instantly generate a structure right in front of you:
 
 ```bash
 /place feature immortality:ancient_pagoda
@@ -78,13 +78,13 @@
 /place feature immortality:spirit_vein_grotto
 ```
 
-- **`ancient_pagoda`**: 3-этажная Древняя Пагода Озарения с алтарями и сундуками.
-- **`ruined_dao_shrine`**: Святилище Древнего Дао с флагами формаций и `Formation Core`.
-- **`spirit_vein_grotto`**: Подземный Духовный Грот с духовным озером и залежами камней.
+- **`ancient_pagoda`**: A 3-story Ancient Pagoda of Enlightenment with altars and chests.
+- **`ruined_dao_shrine`**: A Ruined Dao Shrine with formation flags and a `Formation Core`.
+- **`spirit_vein_grotto`**: An underground Spirit Grotto with a spiritual pool and stone deposits.
 
 ---
 
-## 🐉 5. Команды Призыва Мобoв и Боссов (`/summon`)
+## 🐉 5. Mob & Boss Summoning Commands (`/summon`)
 
 ```bash
 /summon immortality:tribulation_lord
@@ -93,16 +93,16 @@
 /summon immortality:spirit_beast
 ```
 
-- **`tribulation_lord`**: Босс Владыка Небесной Кары (300 HP, уязвим **только для оружия с Ци**).
-- **`flame_salamander`**: Пламенная Саламандра (70 HP, поджигает, дропает `Flame Beast Core`).
-- **`frost_fox`**: Девятихвостая Морозная Лиса (45 HP, замедляет III, дропает `Frost Beast Core`).
-- **`spirit_beast`**: Духовный Зверь Ци.
+- **`tribulation_lord`**: The Tribulation Lord boss (300 HP, vulnerable **only to Qi-infused weapons**).
+- **`flame_salamander`**: Flame Salamander (70 HP, sets targets on fire, drops `Flame Beast Core`).
+- **`frost_fox`**: Nine-Tailed Frost Fox (45 HP, applies Slowness III, drops `Frost Beast Core`).
+- **`spirit_beast`**: Spirit Beast of Qi.
 
 ---
 
-## 🌌 6. Команда Телепортации в Измерение
+## 🌌 6. Dimension Teleport Command
 
 ```bash
 /execute in immortality:world_of_immortals run tp ~ 100 ~
 ```
-- Телепортирует игрока в измерение культиваторов **World of Immortals**.
+- Teleports the player to the cultivator dimension **World of Immortals**.

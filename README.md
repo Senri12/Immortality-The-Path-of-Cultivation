@@ -5,7 +5,7 @@
 [![Java](https://img.shields.io/badge/Java-21-red.svg?logo=oracle&color=ED8B00)](https://oracle.com/java/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An advanced Eastern-fantasy magic mod for **Minecraft Fabric 1.21.11+**, merging the deep cultivation lore of the Xianxia webnovel **"Renegade Immortal" (Противостояние Святого)** with the interactive, progression-based research mechanics of **"Thaumcraft 4"**.
+An advanced Eastern-fantasy magic mod for **Minecraft Fabric 1.21.11+**, merging the deep cultivation lore of the Xianxia webnovel **"Renegade Immortal"** with the interactive, progression-based research mechanics of **"Thaumcraft 4"**.
 
 ---
 
@@ -28,7 +28,7 @@ An advanced Eastern-fantasy magic mod for **Minecraft Fabric 1.21.11+**, merging
 
 ## 🌌 Overview & Lore
 
-Step onto the path of defiance against the heavens. Inspired by **Er Gen's Renegade Immortal**, you start as a fragile mortal in a hostile world. By gathering spiritual energy (**Qi**), tempering your body, studying manuals, and surviving **Heavenly Tribulations (молнии трибуляции)**, you can climb the 12 realms of cultivation to attain absolute immortality.
+Step onto the path of defiance against the heavens. Inspired by **Er Gen's Renegade Immortal**, you start as a fragile mortal in a hostile world. By gathering spiritual energy (**Qi**), tempering your body, studying manuals, and surviving **Heavenly Tribulations**, you can climb the 12 realms of cultivation to attain absolute immortality.
 
 Progression is non-linear and is governed by a **Thaumcraft 4-inspired** research system. Players must analyze elemental aspects, connect them in a hexagonal grid, and navigate scrollable parchment maps to unlock deep magical secrets.
 
@@ -88,25 +88,25 @@ The mod features a 12-stage realm progression. Higher realms grant passive **Str
 
 | Realm Name | Qi Capacity | Passive Abilities |
 | :--- | :---: | :--- |
-| **Mortal (Смертный)** | 30 | None |
-| **Qi Gathering (Сбор Ци)** | 80 | Passive Qi accumulation |
-| **Foundation Establishment (Создание Основы)** | 140 | Ability to start base-level arrays |
-| **Core Formation (Формирование Ядра)** | 220 | Inedia (No hunger), Wither/Poison immunities, speed boost |
-| **Nascent Soul (Зарождающаяся Душа)** | 320 | Jump height boost, fall damage immunity |
-| **Spirit Severing (Отсечение Духа)** | 450 | Water breathing |
-| **Ascendant (Вознесение)** | 620 | **Infinite survival-creative flight (0 Qi cost)** |
-| **Illusory Yin (Иллюзорный Инь)** | 820 | Flight speed x2.0 |
-| **Corporeal Yang (Телесный Ян)** | 1050 | Flight speed x2.5 |
-| **Nirvana Scryer (Провидец Нирваны)** | 1320 | Flight speed x3.0 |
-| **Nirvana Cleanser (Очиститель Нирваны)** | 1650 | Flight speed x3.5 |
-| **Void Tribulant (Испытуемый Пустотой)** | 2050 | Flight speed x4.0, ultimate status |
+| **Mortal** | 30 | None |
+| **Qi Gathering** | 80 | Passive Qi accumulation |
+| **Foundation Establishment** | 140 | Ability to start base-level arrays |
+| **Core Formation** | 220 | Inedia (No hunger), Wither/Poison immunities, speed boost |
+| **Nascent Soul** | 320 | Jump height boost, fall damage immunity |
+| **Spirit Severing** | 450 | Water breathing |
+| **Ascendant** | 620 | **Infinite survival-creative flight (0 Qi cost)** |
+| **Illusory Yin** | 820 | Flight speed x2.0 |
+| **Corporeal Yang** | 1050 | Flight speed x2.5 |
+| **Nirvana Scryer** | 1320 | Flight speed x3.0 |
+| **Nirvana Cleanser** | 1650 | Flight speed x3.5 |
+| **Void Tribulant** | 2050 | Flight speed x4.0, ultimate status |
 
 ### Body Constitutions
 
 Every player is born with or reincarnated into a custom spiritual body defined in `bodies.json`:
-*   **Iron Body (Железное Тело):** +6% breakthrough rate, +10% Qi stability. Compatible with Earth Cores.
-*   **Spirit Vessel (Духовный Сосуд):** +12% breakthrough rate, +4% Qi stability. Compatible with Spirit Cores.
-*   **Demonic Veins (Демонические Меридианы):** +18% breakthrough rate, but -12% Qi stability penalty (High Qi Deviation risk!). Compatible with Fire Cores.
+*   **Iron Body:** +6% breakthrough rate, +10% Qi stability. Compatible with Earth Cores.
+*   **Spirit Vessel:** +12% breakthrough rate, +4% Qi stability. Compatible with Spirit Cores.
+*   **Demonic Veins:** +18% breakthrough rate, but -12% Qi stability penalty (High Qi Deviation risk!). Compatible with Fire Cores.
 
 ### Modular Magic Arrays & Runes
 
@@ -145,9 +145,7 @@ All recipes are 1.21+ compliant (using strings instead of object arrays in ingre
 
 ## 🤝 Call for Contributors (Open Source)
 
-> **RU:** Я бы очень хотел увидеть активное развитие этого мода! К сожалению, я не профессиональный программист или дизайнер, и у меня мало свободного времени. Если вы умеете писать код на Java, создавать 3D-модели, рисовать текстуры или придумывать новые механики — я буду бесконечно благодарен за любую помощь и пул-реквесты! Давайте развивать этот проект вместе!
-> 
-> **EN:** This project is fully open-source and welcoming to developers, artists, sound designers, and writers. Whether you want to fix bugs, optimize core calculations, add new arrays, or model spiritual beasts, your contributions are highly valued. Feel free to fork the repository and open a pull request!
+This project is fully open-source and welcoming to developers, artists, sound designers, and writers. I'd love to see this mod grow further — I'm not a professional programmer or designer and have limited free time, so any help is deeply appreciated. Whether you want to fix bugs, optimize core calculations, add new arrays, or model spiritual beasts, your contributions are highly valued. Feel free to fork the repository and open a pull request!
 
 ---
 

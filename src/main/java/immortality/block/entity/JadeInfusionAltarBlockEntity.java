@@ -698,5 +698,53 @@ public class JadeInfusionAltarBlockEntity extends BlockEntity {
 			stack -> true,
 			(central, level) -> new ItemStack(Immortality.GOLDEN_CORE_PILL)
 		));
+
+		// Recipe 22: Sharp Qi-Edge Infusion (Any weapon)
+		RECIPES.add(new InfusionRecipe(
+			null,
+			Arrays.asList(
+				Immortality.FROST_BEAST_CORE,
+				Immortality.HEAVENLY_IRON
+			),
+			immortality.cultivation.CultivationStage.CORE_FORMATION,
+			300,
+			isEquipment,
+			(central, level) -> {
+				ItemStack result = central.copy();
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
+				mods.removeIf(m -> m.id().equals("sharp"));
+				mods.add(new immortality.item.ModifierInstance("sharp", 3));
+				int flags = current != null ? current.flags() : SpiritualBlueprintComponent.TEMPERED;
+				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
+					mods, flags, 120, 120
+				));
+				return result;
+			}
+		));
+
+		// Recipe 23: Swift Wind Infusion (Any armor/equipment)
+		RECIPES.add(new InfusionRecipe(
+			null,
+			Arrays.asList(
+				Immortality.SPIRIT_GRASS,
+				Immortality.PHOENIX_FEATHER
+			),
+			immortality.cultivation.CultivationStage.FOUNDATION_ESTABLISHMENT,
+			220,
+			isEquipment,
+			(central, level) -> {
+				ItemStack result = central.copy();
+				SpiritualBlueprintComponent current = result.get(Immortality.SPIRITUAL_BLUEPRINT);
+				List<immortality.item.ModifierInstance> mods = current != null ? new ArrayList<>(current.modifiers()) : new ArrayList<>();
+				mods.removeIf(m -> m.id().equals("swift"));
+				mods.add(new immortality.item.ModifierInstance("swift", 2));
+				int flags = current != null ? current.flags() : SpiritualBlueprintComponent.TEMPERED;
+				result.set(Immortality.SPIRITUAL_BLUEPRINT, new SpiritualBlueprintComponent(
+					mods, flags, 100, 100
+				));
+				return result;
+			}
+		));
 	}
 }
